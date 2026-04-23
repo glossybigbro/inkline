@@ -7,10 +7,10 @@ plugins {
 }
 
 // clone 시 git hook 경로 자동 설정
-tasks.register("installGitHooks") {
-    doLast {
-        exec { commandLine("git", "config", "core.hooksPath", ".githooks") }
-    }
+tasks.register<Exec>("installGitHooks") {
+    commandLine("git", "config", "core.hooksPath", ".githooks")
+    // CI 환경에서는 실패해도 무시
+    isIgnoreExitValue = true
 }
 
 // 빌드 시 자동으로 git hook 설정
