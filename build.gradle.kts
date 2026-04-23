@@ -6,6 +6,18 @@ plugins {
     alias(libs.plugins.spotless)
 }
 
+// clone 시 git hook 경로 자동 설정
+tasks.register("installGitHooks") {
+    doLast {
+        exec { commandLine("git", "config", "core.hooksPath", ".githooks") }
+    }
+}
+
+// 빌드 시 자동으로 git hook 설정
+tasks.matching { it.name == "prepareKotlinBuildScriptModel" }.configureEach {
+    dependsOn("installGitHooks")
+}
+
 spotless {
     kotlin {
         target("**/*.kt")

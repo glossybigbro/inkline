@@ -1,0 +1,40 @@
+#!/bin/sh
+
+# Conventional Commits 형식 검증
+# 형식: type: description
+# 예시: feat: add wavy underline style
+
+commit_msg_file="$1"
+commit_msg=$(head -1 "$commit_msg_file")
+
+# 허용되는 type 목록
+types="feat|fix|docs|chore|refactor|test|style|ci"
+
+# 정규식: type: 소문자로 시작하는 설명
+pattern="^($types): .+"
+
+if ! echo "$commit_msg" | grep -Eq "$pattern"; then
+    echo ""
+    echo "❌ 커밋 메시지가 Conventional Commits 형식이 아닙니다."
+    echo ""
+    echo "올바른 형식: type: description"
+    echo ""
+    echo "허용되는 type:"
+    echo "  feat:     새 기능 추가"
+    echo "  fix:      버그 수정"
+    echo "  docs:     문서 변경"
+    echo "  chore:    빌드/설정 변경"
+    echo "  refactor: 리팩토링"
+    echo "  test:     테스트 추가/수정"
+    echo "  style:    코드 포맷팅"
+    echo "  ci:       CI/CD 변경"
+    echo ""
+    echo "예시:"
+    echo "  feat: add wavy underline style"
+    echo "  fix: wrong offset calculation on multi-line"
+    echo "  docs: update API design document"
+    echo ""
+    echo "입력한 메시지: $commit_msg"
+    echo ""
+    exit 1
+fi
