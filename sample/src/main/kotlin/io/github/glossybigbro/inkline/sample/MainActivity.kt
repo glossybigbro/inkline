@@ -29,9 +29,10 @@ class MainActivity : ComponentActivity() {
                         verticalArrangement = Arrangement.spacedBy(32.dp),
                     ) {
                         // Solid
-                        val solid = rememberInkline {
-                            underline(offset = 4.dp, color = Color.Blue)
-                        }
+                        val solid =
+                            rememberInkline {
+                                underline(offset = 4.dp, color = Color.Blue)
+                            }
                         Text(
                             text = solid.apply("Solid underline"),
                             modifier = Modifier.drawBehind(solid),
@@ -40,13 +41,14 @@ class MainActivity : ComponentActivity() {
                         )
 
                         // Dashed
-                        val dashed = rememberInkline {
-                            underline(
-                                offset = 4.dp,
-                                style = InklineStyle.Dashed,
-                                color = Color.Red,
-                            )
-                        }
+                        val dashed =
+                            rememberInkline {
+                                underline(
+                                    offset = 4.dp,
+                                    style = InklineStyle.Dashed,
+                                    color = Color.Red,
+                                )
+                            }
                         Text(
                             text = dashed.apply("Dashed underline"),
                             modifier = Modifier.drawBehind(dashed),
@@ -55,13 +57,14 @@ class MainActivity : ComponentActivity() {
                         )
 
                         // Dotted
-                        val dotted = rememberInkline {
-                            underline(
-                                offset = 4.dp,
-                                style = InklineStyle.Dotted,
-                                color = Color.Gray,
-                            )
-                        }
+                        val dotted =
+                            rememberInkline {
+                                underline(
+                                    offset = 4.dp,
+                                    style = InklineStyle.Dotted,
+                                    color = Color.Gray,
+                                )
+                            }
                         Text(
                             text = dotted.apply("Dotted underline"),
                             modifier = Modifier.drawBehind(dotted),
@@ -70,14 +73,15 @@ class MainActivity : ComponentActivity() {
                         )
 
                         // Wavy
-                        val wavy = rememberInkline {
-                            underline(
-                                offset = 4.dp,
-                                thickness = 1.5.dp,
-                                style = InklineStyle.Wavy,
-                                color = Color.Red,
-                            )
-                        }
+                        val wavy =
+                            rememberInkline {
+                                underline(
+                                    offset = 4.dp,
+                                    thickness = 1.5.dp,
+                                    style = InklineStyle.Wavy,
+                                    color = Color.Red,
+                                )
+                            }
                         Text(
                             text = wavy.apply("Wavy underline (spelling error)"),
                             modifier = Modifier.drawBehind(wavy),
@@ -86,9 +90,10 @@ class MainActivity : ComponentActivity() {
                         )
 
                         // f vs e 문제 해결 데모
-                        val offsetDemo = rememberInkline {
-                            underline(offset = 6.dp, thickness = 1.dp)
-                        }
+                        val offsetDemo =
+                            rememberInkline {
+                                underline(offset = 6.dp, thickness = 1.dp)
+                            }
                         Text(
                             text = offsetDemo.apply("different offers — f가 e로 안 보임"),
                             modifier = Modifier.drawBehind(offsetDemo),

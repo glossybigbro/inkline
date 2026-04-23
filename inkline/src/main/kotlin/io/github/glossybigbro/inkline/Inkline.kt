@@ -34,17 +34,13 @@ class Inkline internal constructor(
     /**
      * String을 AnnotatedString으로 변환한다.
      */
-    fun apply(text: String): AnnotatedString {
-        return buildAnnotatedString { append(text) }
-    }
+    fun apply(text: String): AnnotatedString = buildAnnotatedString { append(text) }
 
     /**
      * AnnotatedString에서 기존 TextDecoration.Underline을 제거한다.
      * Inkline이 직접 그리므로 네이티브 밑줄은 필요 없다.
      */
-    fun apply(text: AnnotatedString): AnnotatedString {
-        return text
-    }
+    fun apply(text: AnnotatedString): AnnotatedString = text
 
     /**
      * DrawScope에서 밑줄을 그린다.
@@ -56,11 +52,12 @@ class Inkline internal constructor(
         for (config in configs) {
             val offsetPx = config.offset.toPx()
             val thicknessPx = config.thickness.toPx()
-            val lineColor = if (config.color == Color.Unspecified) {
-                Color.Black
-            } else {
-                config.color
-            }
+            val lineColor =
+                if (config.color == Color.Unspecified) {
+                    Color.Black
+                } else {
+                    config.color
+                }
 
             for (line in 0 until layout.lineCount) {
                 val lineLeft = layout.getLineLeft(line)
@@ -86,9 +83,10 @@ class Inkline internal constructor(
                             start = Offset(lineLeft, y),
                             end = Offset(lineRight, y),
                             strokeWidth = thicknessPx,
-                            pathEffect = PathEffect.dashPathEffect(
-                                floatArrayOf(dashLength, gapLength),
-                            ),
+                            pathEffect =
+                                PathEffect.dashPathEffect(
+                                    floatArrayOf(dashLength, gapLength),
+                                ),
                         )
                     }
 
@@ -100,20 +98,22 @@ class Inkline internal constructor(
                             start = Offset(lineLeft, y),
                             end = Offset(lineRight, y),
                             strokeWidth = thicknessPx,
-                            pathEffect = PathEffect.dashPathEffect(
-                                floatArrayOf(dotLength, gapLength),
-                            ),
+                            pathEffect =
+                                PathEffect.dashPathEffect(
+                                    floatArrayOf(dotLength, gapLength),
+                                ),
                         )
                     }
 
                     InklineStyle.Wavy -> {
-                        val wavePath = buildWavyPath(
-                            startX = lineLeft,
-                            endX = lineRight,
-                            y = y,
-                            amplitude = thicknessPx * 1.5f,
-                            wavelength = thicknessPx * 8f,
-                        )
+                        val wavePath =
+                            buildWavyPath(
+                                startX = lineLeft,
+                                endX = lineRight,
+                                y = y,
+                                amplitude = thicknessPx * 1.5f,
+                                wavelength = thicknessPx * 8f,
+                            )
                         drawPath(
                             path = wavePath,
                             color = lineColor,

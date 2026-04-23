@@ -14,8 +14,7 @@ import androidx.compose.ui.draw.drawBehind
  * )
  * ```
  */
-fun Modifier.drawBehind(inkline: Inkline): Modifier {
-    return this.drawBehind {
+fun Modifier.drawBehind(inkline: Inkline): Modifier =
+    this.drawBehind {
         with(inkline) { draw() }
     }
-}

@@ -13,10 +13,9 @@ import androidx.compose.runtime.remember
  * ```
  */
 @Composable
-fun rememberInkline(block: InklineScope.() -> Unit): Inkline {
-    return remember(block) {
+fun rememberInkline(block: InklineScope.() -> Unit): Inkline =
+    remember(block) {
         val scope = InklineScopeImpl()
         scope.block()
         Inkline(scope.configs.toList())
     }
-}
