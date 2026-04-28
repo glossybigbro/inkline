@@ -1,0 +1,7 @@
+io.github.glossybigbro.inkline.benchmark-pngs-0 /Users/mozzmily/glossybigbro/android/inkline/benchmark/build/generated/res/pngs/debug
+io.github.glossybigbro.inkline.benchmark-updated_navigation_xml-1 /Users/mozzmily/glossybigbro/android/inkline/benchmark/build/generated/updated_navigation_xml/debug
+io.github.glossybigbro.inkline.benchmark-packageDebugResources-2 /Users/mozzmily/glossybigbro/android/inkline/benchmark/build/intermediates/incremental/debug/packageDebugResources/merged.dir
+io.github.glossybigbro.inkline.benchmark-packageDebugResources-3 /Users/mozzmily/glossybigbro/android/inkline/benchmark/build/intermediates/incremental/debug/packageDebugResources/stripped.dir
+io.github.glossybigbro.inkline.benchmark-debug-4 /Users/mozzmily/glossybigbro/android/inkline/benchmark/build/intermediates/merged_res/debug/mergeDebugResources
+io.github.glossybigbro.inkline.benchmark-debug-5 /Users/mozzmily/glossybigbro/android/inkline/benchmark/src/debug/res
+io.github.glossybigbro.inkline.benchmark-main-6 /Users/mozzmily/glossybigbro/android/inkline/benchmark/src/main/res
