@@ -1,11 +1,12 @@
 package io.github.glossybigbro.inkline
 
+import androidx.compose.runtime.Stable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
 /**
- * Inkline DSL 빌더 스코프.
+ * DSL scope for configuring underline decorations.
  *
  * ```kotlin
  * rememberInkline {
@@ -13,7 +14,16 @@ import androidx.compose.ui.unit.dp
  * }
  * ```
  */
+@Stable
 interface InklineScope {
+    /**
+     * Adds an underline decoration with the given properties.
+     *
+     * @param offset Gap between the text baseline and the underline.
+     * @param thickness Underline stroke width.
+     * @param color Underline color. [Color.Unspecified] follows the text color.
+     * @param style Visual style of the underline.
+     */
     fun underline(
         offset: Dp = 2.dp,
         thickness: Dp = 1.dp,

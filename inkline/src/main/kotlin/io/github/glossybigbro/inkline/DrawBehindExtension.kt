@@ -4,7 +4,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
 
 /**
- * Inkline의 밑줄을 텍스트 뒤에 그리는 Modifier 확장.
+ * Draws [inkline] underlines behind the text content.
+ *
+ * This is the third hook in the 3-hook connection pattern.
+ * Pair with [Inkline.apply] and [Inkline.onTextLayout]:
  *
  * ```kotlin
  * Text(
@@ -13,6 +16,10 @@ import androidx.compose.ui.draw.drawBehind
  *     onTextLayout = inkline::onTextLayout,
  * )
  * ```
+ *
+ * @param inkline The [Inkline] instance containing underline configurations.
+ * @see Inkline
+ * @see rememberInkline
  */
 fun Modifier.drawBehind(inkline: Inkline): Modifier =
     this.drawBehind {

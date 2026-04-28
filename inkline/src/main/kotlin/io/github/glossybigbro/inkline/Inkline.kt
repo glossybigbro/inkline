@@ -1,5 +1,6 @@
 package io.github.glossybigbro.inkline
 
+import androidx.compose.runtime.Stable
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
@@ -12,39 +13,56 @@ import androidx.compose.ui.text.buildAnnotatedString
 import kotlin.math.sin
 
 /**
- * Inkline — 커스텀 밑줄 도구.
+ * Custom underline drawing engine for Jetpack Compose.
  *
- * 3-hook으로 Text에 연결:
- * 1. `inkline.apply(text)` → AnnotatedString 변환
- * 2. `inkline::onTextLayout` → 레이아웃 캡처
- * 3. `Modifier.drawBehind(inkline)` → 밑줄 그리기
+ * Connect to any [Text] composable with 3 hooks:
+ * 1. `inkline.apply(text)` — convert to [AnnotatedString]
+ * 2. `inkline::onTextLayout` — capture layout info
+ * 3. `Modifier.drawBehind(inkline)` — draw underlines
+ *
+ * ```kotlin
+ * val inkline = rememberInkline {
+ *     underline(offset = 4.dp, color = Color.Blue)
+ * }
+ *
+ * Text(
+ *     text = inkline.apply("Hello"),
+ *     modifier = Modifier.drawBehind(inkline),
+ *     onTextLayout = inkline::onTextLayout,
+ * )
+ * ```
+ *
+ * @see rememberInkline
+ * @see drawBehind
  */
+@Stable
 class Inkline internal constructor(
     private val configs: List<UnderlineConfig>,
 ) {
     private var layoutResult: TextLayoutResult? = null
 
     /**
-     * Text의 onTextLayout 콜백에 연결한다.
+     * Captures the [TextLayoutResult] from `Text`'s `onTextLayout` callback.
+     * Must be connected for underlines to render.
      */
     fun onTextLayout(result: TextLayoutResult) {
         layoutResult = result
     }
 
     /**
-     * String을 AnnotatedString으로 변환한다.
+     * Converts a plain [String] to an [AnnotatedString] for use with `Text`.
      */
     fun apply(text: String): AnnotatedString = buildAnnotatedString { append(text) }
 
     /**
-     * AnnotatedString에서 기존 TextDecoration.Underline을 제거한다.
-     * Inkline이 직접 그리므로 네이티브 밑줄은 필요 없다.
+     * Passes through an existing [AnnotatedString] unchanged.
+     * Native [TextDecoration.Underline] is not stripped — Inkline draws on a separate layer.
      */
     fun apply(text: AnnotatedString): AnnotatedString = text
 
     /**
-     * DrawScope에서 밑줄을 그린다.
-     * Modifier.drawBehind { } 안에서 호출.
+     * Draws all configured underlines on the [DrawScope] canvas.
+     * Called internally by [Modifier.drawBehind].
      */
     fun DrawScope.draw() {
         val layout = layoutResult ?: return

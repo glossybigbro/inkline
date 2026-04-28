@@ -1,11 +1,21 @@
 package io.github.glossybigbro.inkline
 
+import androidx.compose.runtime.Immutable
+
 /**
- * 밑줄 스타일.
+ * Visual style of the underline.
  */
+@Immutable
 enum class InklineStyle {
+    /** Continuous straight line. */
     Solid,
+
+    /** Repeating dash segments. */
     Dashed,
+
+    /** Repeating dot segments. */
     Dotted,
+
+    /** Sine wave pattern. */
     Wavy,
 }
