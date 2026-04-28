@@ -23,3 +23,4 @@ rootProject.name = "inkline" // 프로젝트 이름
 
 include(":inkline") // 라이브러리 모듈 등록
 include(":sample") // 샘플 앱 모듈 등록
+include(":benchmark") // Macrobenchmark 모듈
