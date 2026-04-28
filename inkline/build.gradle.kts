@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.library) // ① 이 모듈은 Android 라이브러리
     alias(libs.plugins.compose.compiler) // ② Compose 코드 쓸 거야
     alias(libs.plugins.maven.publish) // ③ Maven Central에 배포할 거야
+    alias(libs.plugins.roborazzi.plugin) // ④ 스크린샷 테스트
 }
 
 android {
@@ -17,6 +18,7 @@ android {
                 .get()
                 .toInt() // 23 — 최소 지원 버전
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     compileOptions {
@@ -27,6 +29,16 @@ android {
     buildFeatures {
         compose = true // Compose 활성화
     }
+
+    testOptions {
+        unitTests {
+            isIncludeAndroidResources = true
+        }
+    }
+}
+
+roborazzi {
+    outputDir.set(file("src/test/screenshots"))
 }
 
 dependencies {
@@ -38,6 +50,12 @@ dependencies {
     implementation(libs.androidx.compose.foundation)
 
     testImplementation(libs.junit)
+    testImplementation(libs.robolectric)
+    testImplementation(libs.roborazzi)
+    testImplementation(libs.roborazzi.compose)
+    testImplementation(libs.roborazzi.junit.rule)
+    testImplementation(composeBom)
+    testImplementation(libs.androidx.compose.ui.test.junit4)
     // 버전 안 써도 됨 — BOM이 알아서 맞는 버전 넣어줌
     androidTestImplementation(composeBom)
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
