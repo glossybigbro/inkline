@@ -10,3 +10,4 @@
 .externalNativeBuild
 .cxx
 .kotlin/
+/benchmark/build
