@@ -24,3 +24,23 @@ jobs:
 
       - name: Build
         run: ./gradlew assemble
+
+      - name: Unit tests
+        run: ./gradlew :inkline:testDebugUnitTest
+
+      - name: Screenshot tests
+        run: ./gradlew :inkline:verifyRoborazziDebug
+
+      - name: Upload test reports
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-reports
+          path: inkline/build/reports/tests/
+
+      - name: Upload screenshot diffs
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: screenshot-diffs
+          path: inkline/build/outputs/roborazzi/
