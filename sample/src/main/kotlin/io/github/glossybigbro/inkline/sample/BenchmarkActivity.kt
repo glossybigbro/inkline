@@ -3,8 +3,10 @@ package io.github.glossybigbro.inkline.sample
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeDrawingPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -28,6 +30,7 @@ import io.github.glossybigbro.inkline.rememberInkline
 class BenchmarkActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
         val mode = intent.getStringExtra("mode") ?: "inkline"
         val lines = intent.getIntExtra("lines", 1)
         val style = intent.getStringExtra("style") ?: "solid"
@@ -38,6 +41,7 @@ class BenchmarkActivity : ComponentActivity() {
                     modifier =
                         Modifier
                             .fillMaxSize()
+                            .safeDrawingPadding()
                             .semantics { testTagsAsResourceId = true },
                 ) {
                     BenchmarkContent(mode = mode, lines = lines, style = style)
