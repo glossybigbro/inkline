@@ -16,10 +16,6 @@
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" /></a>
 </p>
 
-<p align="center">
-  <img src="docs/images/before-after.gif" width="360" />
-</p>
-
 ## The Problem
 
 Compose's `TextDecoration.Underline` is on/off only. No offset, no thickness, no color, no style.
