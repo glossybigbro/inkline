@@ -37,7 +37,7 @@ class MainActivity : ComponentActivity() {
                                 underline(offset = 4.dp, color = Color.Blue)
                             }
                         Text(
-                            text = solid.apply("Solid underline"),
+                            text = solid.extend("Solid underline"),
                             modifier = Modifier.drawBehind(solid),
                             onTextLayout = solid::onTextLayout,
                             fontSize = 20.sp,
@@ -53,7 +53,7 @@ class MainActivity : ComponentActivity() {
                                 )
                             }
                         Text(
-                            text = dashed.apply("Dashed underline"),
+                            text = dashed.extend("Dashed underline"),
                             modifier = Modifier.drawBehind(dashed),
                             onTextLayout = dashed::onTextLayout,
                             fontSize = 20.sp,
@@ -69,7 +69,7 @@ class MainActivity : ComponentActivity() {
                                 )
                             }
                         Text(
-                            text = dotted.apply("Dotted underline"),
+                            text = dotted.extend("Dotted underline"),
                             modifier = Modifier.drawBehind(dotted),
                             onTextLayout = dotted::onTextLayout,
                             fontSize = 20.sp,
@@ -86,7 +86,7 @@ class MainActivity : ComponentActivity() {
                                 )
                             }
                         Text(
-                            text = wavy.apply("Wavy underline (spelling error)"),
+                            text = wavy.extend("Wavy underline (spelling error)"),
                             modifier = Modifier.drawBehind(wavy),
                             onTextLayout = wavy::onTextLayout,
                             fontSize = 20.sp,
@@ -98,7 +98,7 @@ class MainActivity : ComponentActivity() {
                                 underline(offset = 6.dp, thickness = 1.dp)
                             }
                         Text(
-                            text = offsetDemo.apply("different offers — f가 e로 안 보임"),
+                            text = offsetDemo.extend("different offers — f가 e로 안 보임"),
                             modifier = Modifier.drawBehind(offsetDemo),
                             onTextLayout = offsetDemo::onTextLayout,
                             fontSize = 20.sp,

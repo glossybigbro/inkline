@@ -7,11 +7,11 @@ import androidx.compose.ui.draw.drawBehind
  * Draws [inkline] underlines behind the text content.
  *
  * This is the third hook in the 3-hook connection pattern.
- * Pair with [Inkline.apply] and [Inkline.onTextLayout]:
+ * Pair with [Inkline.extend] and [Inkline.onTextLayout]:
  *
  * ```kotlin
  * Text(
- *     text = inkline.apply(text),
+ *     text = inkline.extend(text),
  *     modifier = Modifier.drawBehind(inkline),
  *     onTextLayout = inkline::onTextLayout,
  * )

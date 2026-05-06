@@ -16,7 +16,7 @@ import kotlin.math.sin
  * Custom underline drawing engine for Jetpack Compose.
  *
  * Connect to any [Text] composable with 3 hooks:
- * 1. `inkline.apply(text)` — convert to [AnnotatedString]
+ * 1. `inkline.extend(text)` — convert to [AnnotatedString]
  * 2. `inkline::onTextLayout` — capture layout info
  * 3. `Modifier.drawBehind(inkline)` — draw underlines
  *
@@ -26,7 +26,7 @@ import kotlin.math.sin
  * }
  *
  * Text(
- *     text = inkline.apply("Hello"),
+ *     text = inkline.extend("Hello"),
  *     modifier = Modifier.drawBehind(inkline),
  *     onTextLayout = inkline::onTextLayout,
  * )
@@ -52,19 +52,19 @@ class Inkline internal constructor(
     /**
      * Converts a plain [String] to an [AnnotatedString] for use with `Text`.
      */
-    fun apply(text: String): AnnotatedString = buildAnnotatedString { append(text) }
+    fun extend(text: String): AnnotatedString = buildAnnotatedString { append(text) }
 
     /**
      * Passes through an existing [AnnotatedString] unchanged.
      * Native [TextDecoration.Underline] is not stripped — Inkline draws on a separate layer.
      */
-    fun apply(text: AnnotatedString): AnnotatedString = text
+    fun extend(text: AnnotatedString): AnnotatedString = text
 
     /**
      * Draws all configured underlines on the [DrawScope] canvas.
      * Called internally by [Modifier.drawBehind].
      */
-    fun DrawScope.draw() {
+    internal fun DrawScope.draw() {
         val layout = layoutResult ?: return
 
         for (config in configs) {

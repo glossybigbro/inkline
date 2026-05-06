@@ -11,7 +11,7 @@ val inkline = rememberInkline {
 }
 
 Text(
-    text = inkline.apply(text),
+    text = inkline.extend(text),
     modifier = Modifier.drawBehind(inkline),
     onTextLayout = inkline::onTextLayout
 )
@@ -89,8 +89,8 @@ class Inkline {
     fun onTextLayout(result: TextLayoutResult)
 
     // AnnotatedString 변환 (기존 decoration 제거 → Inkline이 직접 그림)
-    fun apply(text: AnnotatedString): AnnotatedString
-    fun apply(text: String): AnnotatedString
+    fun extend(text: AnnotatedString): AnnotatedString
+    fun extend(text: String): AnnotatedString
 
     // Modifier.drawBehind에 연결
     fun DrawScope.draw()
@@ -98,7 +98,7 @@ class Inkline {
 ```
 
 3-hook 연결:
-1. `inkline.apply(text)` → AnnotatedString 변환
+1. `inkline.extend(text)` → AnnotatedString 변환
 2. `inkline::onTextLayout` → 레이아웃 정보 캡처
 3. `Modifier.drawBehind(inkline)` → Canvas에 밑줄 그리기
 
@@ -126,7 +126,7 @@ Saket Narayan의 extended-spans가 확립한 패턴을 따른다.
 
 ```
 rememberInkline { ... }  →  설정
-inkline.apply(text)       →  AnnotatedString 변환
+inkline.extend(text)      →  AnnotatedString 변환
 inkline::onTextLayout     →  레이아웃 캡처
 drawBehind(inkline)       →  그리기
 ```
@@ -181,7 +181,7 @@ val inkline = rememberInkline {
 }
 
 Text(
-    text = inkline.apply("Terms of Service"),
+    text = inkline.extend("Terms of Service"),
     modifier = Modifier.drawBehind(inkline),
     onTextLayout = inkline::onTextLayout
 )
@@ -199,7 +199,7 @@ val inkline = rememberInkline {
 }
 
 Text(
-    text = inkline.apply("different offers"),
+    text = inkline.extend("different offers"),
     modifier = Modifier.drawBehind(inkline),
     onTextLayout = inkline::onTextLayout
 )
@@ -217,7 +217,7 @@ val inkline = rememberInkline {
 }
 
 Text(
-    text = inkline.apply("speling error"),
+    text = inkline.extend("speling error"),
     modifier = Modifier.drawBehind(inkline),
     onTextLayout = inkline::onTextLayout
 )
@@ -231,7 +231,7 @@ val inkline = rememberInkline {
 }
 
 Text(
-    text = inkline.apply(longText),
+    text = inkline.extend(longText),
     modifier = Modifier
         .width(200.dp)
         .drawBehind(inkline),

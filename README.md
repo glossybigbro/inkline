@@ -59,7 +59,7 @@ val inkline = rememberInkline {
 }
 
 Text(
-    text = inkline.apply("Hello World"),
+    text = inkline.extend("Hello World"),
     modifier = Modifier.drawBehind(inkline),
     onTextLayout = inkline::onTextLayout
 )
@@ -94,7 +94,7 @@ val inkline = rememberInkline {
 }
 
 Text(
-    text = inkline.apply(longText),
+    text = inkline.extend(longText),
     modifier = Modifier.drawBehind(inkline),
     onTextLayout = inkline::onTextLayout,
     maxLines = 3,
