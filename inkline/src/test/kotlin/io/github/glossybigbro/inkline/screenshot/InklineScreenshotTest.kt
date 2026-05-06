@@ -40,7 +40,7 @@ class InklineScreenshotTest {
                 }
             Column(modifier = Modifier.background(Color.White).padding(16.dp)) {
                 BasicText(
-                    text = inkline.apply("Solid underline style"),
+                    text = inkline.extend("Solid underline style"),
                     modifier = Modifier.drawBehind(inkline),
                     onTextLayout = inkline::onTextLayout,
                     style = textStyle,
@@ -59,7 +59,7 @@ class InklineScreenshotTest {
                 }
             Column(modifier = Modifier.background(Color.White).padding(16.dp)) {
                 BasicText(
-                    text = inkline.apply("Dashed underline style"),
+                    text = inkline.extend("Dashed underline style"),
                     modifier = Modifier.drawBehind(inkline),
                     onTextLayout = inkline::onTextLayout,
                     style = textStyle,
@@ -78,7 +78,7 @@ class InklineScreenshotTest {
                 }
             Column(modifier = Modifier.background(Color.White).padding(16.dp)) {
                 BasicText(
-                    text = inkline.apply("Dotted underline style"),
+                    text = inkline.extend("Dotted underline style"),
                     modifier = Modifier.drawBehind(inkline),
                     onTextLayout = inkline::onTextLayout,
                     style = textStyle,
@@ -102,7 +102,7 @@ class InklineScreenshotTest {
                 }
             Column(modifier = Modifier.background(Color.White).padding(16.dp)) {
                 BasicText(
-                    text = inkline.apply("Wavy underline style"),
+                    text = inkline.extend("Wavy underline style"),
                     modifier = Modifier.drawBehind(inkline),
                     onTextLayout = inkline::onTextLayout,
                     style = textStyle,
@@ -122,7 +122,7 @@ class InklineScreenshotTest {
                             underline(offset = offset, color = Color.Blue)
                         }
                     BasicText(
-                        text = inkline.apply("offset = $offset"),
+                        text = inkline.extend("offset = $offset"),
                         modifier = Modifier.padding(bottom = 16.dp).drawBehind(inkline),
                         onTextLayout = inkline::onTextLayout,
                         style = textStyle,
@@ -143,7 +143,7 @@ class InklineScreenshotTest {
                             underline(offset = 4.dp, thickness = thickness, color = Color.Black)
                         }
                     BasicText(
-                        text = inkline.apply("thickness = $thickness"),
+                        text = inkline.extend("thickness = $thickness"),
                         modifier = Modifier.padding(bottom = 16.dp).drawBehind(inkline),
                         onTextLayout = inkline::onTextLayout,
                         style = textStyle,
@@ -164,7 +164,7 @@ class InklineScreenshotTest {
             Column(modifier = Modifier.background(Color.White).padding(16.dp)) {
                 BasicText(
                     text =
-                        inkline.apply(
+                        inkline.extend(
                             "This is a long text that should wrap into multiple lines " +
                                 "to verify that Inkline draws underlines on every line correctly.",
                         ),
@@ -186,7 +186,7 @@ class InklineScreenshotTest {
                 }
             Column(modifier = Modifier.background(Color.White).padding(16.dp)) {
                 BasicText(
-                    text = inkline.apply("different offers — f is not e"),
+                    text = inkline.extend("different offers — f is not e"),
                     modifier = Modifier.drawBehind(inkline),
                     onTextLayout = inkline::onTextLayout,
                     style = textStyle,

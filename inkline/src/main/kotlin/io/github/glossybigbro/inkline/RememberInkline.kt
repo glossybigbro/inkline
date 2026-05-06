@@ -12,7 +12,7 @@ import androidx.compose.runtime.remember
  * }
  *
  * Text(
- *     text = inkline.apply("Hello"),
+ *     text = inkline.extend("Hello"),
  *     modifier = Modifier.drawBehind(inkline),
  *     onTextLayout = inkline::onTextLayout,
  * )

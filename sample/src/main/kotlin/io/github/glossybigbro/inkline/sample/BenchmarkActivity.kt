@@ -92,7 +92,7 @@ private fun InklineItem(
             underline(offset = 4.dp, color = Color.Blue, style = inklineStyle)
         }
     Text(
-        text = inkline.apply("Benchmark line $index with underline"),
+        text = inkline.extend("Benchmark line $index with underline"),
         modifier =
             Modifier
                 .padding(vertical = 4.dp)

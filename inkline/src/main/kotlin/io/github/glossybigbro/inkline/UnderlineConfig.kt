@@ -14,7 +14,7 @@ import androidx.compose.ui.unit.dp
  * @param style Visual style of the underline.
  */
 @Immutable
-data class UnderlineConfig(
+internal data class UnderlineConfig(
     val offset: Dp = 2.dp,
     val thickness: Dp = 1.dp,
     val color: Color = Color.Unspecified,
