@@ -2,8 +2,6 @@
   <img src="docs/images/inkline-logo.svg" width="200" />
 </p>
 
-<h1 align="center">Inkline</h1>
-
 <p align="center">
   Draw the line that <code>TextDecoration</code> couldn't.<br/>
   Custom underline for Jetpack Compose.
