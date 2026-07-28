@@ -1,13 +1,29 @@
-*.iml
+# Build
+build/
 .gradle
-/local.properties
-/.idea
-.DS_Store
-/build
-/inkline/build
-/sample/build
+.kotlin/
 /captures
 .externalNativeBuild
 .cxx
-.kotlin/
-/benchmark/build
+
+# IDE
+*.iml
+/.idea
+
+# OS
+.DS_Store
+
+# Credentials — never commit
+/local.properties
+keystore.properties
+secrets.properties
+*.jks
+*.keystore
+*.p12
+*.pfx
+*.pem
+*.key
+id_rsa*
+.env
+.env.*
+google-services.json
